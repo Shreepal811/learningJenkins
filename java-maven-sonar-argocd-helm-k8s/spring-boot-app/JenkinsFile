@@ -53,6 +53,7 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
+                    git config --global --add safe.directory /var/lib/jenkins/workspace/java-maven-pipeline
                     git config --global user.email "shreepalcloud@gmail.com"
                     git config --global user.name "shreepal Sa"
                     git remote set-url origin https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}
